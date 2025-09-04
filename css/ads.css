@@ -1,0 +1,436 @@
+/* ===== TARGET BLASTER - ADVERTISEMENT STYLING ===== */
+
+/* ===== AD BANNER CONTAINERS ===== */
+.ad-banner {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    overflow: hidden;
+}
+
+/* Top Banner Ad (728x90 Leaderboard) */
+.top-banner {
+    width: 100%;
+    height: 90px;
+    margin-bottom: var(--space-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sidebar Banner Ad (300x250 Medium Rectangle) */
+.sidebar-banner {
+    grid-area: sidebar;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: start;
+    margin-top: var(--space-lg);
+}
+
+/* ===== AD PLACEHOLDERS ===== */
+.ad-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+    border: 1px dashed var(--neon-cyan);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1;
+}
+
+.ad-placeholder.large {
+    font-size: 1rem;
+    padding: var(--space-md);
+    text-align: center;
+}
+
+/* Hide placeholder when ads load */
+.ad-banner .adsbygoogle:not([style*="display: none"]) + .ad-placeholder {
+    display: none;
+}
+
+/* ===== OVERLAY ADS ===== */
+.ad-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+}
+
+.ad-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== INTERSTITIAL AD ===== */
+.ad-content {
+    background: var(--bg-secondary);
+    border: 2px solid var(--neon-cyan);
+    box-shadow: var(--glow-cyan);
+    border-radius: 0;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ad-header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--neon-cyan);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.close-btn {
+    background: transparent;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+}
+
+.close-btn:hover {
+    background: rgba(255, 0, 128, 0.2);
+    box-shadow: 0 0 10px var(--neon-pink);
+    transform: scale(1.1);
+}
+
+.ad-frame {
+    padding: var(--space-lg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    min-width: 400px;
+    position: relative;
+}
+
+/* ===== REWARDED VIDEO AD ===== */
+.video-placeholder {
+    background: linear-gradient(45deg, #0a0a0a, #1a0033);
+    border: 2px solid var(--neon-magenta);
+    box-shadow: var(--glow-magenta);
+    border-radius: 0;
+    width: 480px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-icon {
+    font-size: 3rem;
+    color: var(--neon-magenta);
+    text-shadow: var(--glow-magenta);
+    margin-bottom: var(--space-md);
+    animation: video-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes video-pulse {
+    from { 
+        text-shadow: var(--glow-magenta);
+        transform: scale(1);
+    }
+    to { 
+        text-shadow: 0 0 30px var(--neon-magenta), 0 0 60px var(--neon-magenta);
+        transform: scale(1.1);
+    }
+}
+
+.video-placeholder p {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--neon-magenta);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-lg);
+}
+
+.video-progress {
+    position: absolute;
+    bottom: var(--space-md);
+    left: var(--space-md);
+    right: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255, 0, 255, 0.2);
+    border: 1px solid var(--neon-magenta);
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--neon-magenta);
+    box-shadow: 0 0 10px var(--neon-magenta);
+    width: 0%;
+    animation: video-progress 30s linear forwards;
+}
+
+@keyframes video-progress {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+.progress-text {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===== RESPONSIVE AD STYLES ===== */
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+    .sidebar-banner {
+        display: none;
+    }
+    
+    .top-banner {
+        height: 120px;
+    }
+    
+    .ad-frame {
+        min-width: 300px;
+        padding: var(--space-md);
+    }
+    
+    .video-placeholder {
+        width: 320px;
+        height: 180px;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .top-banner {
+        height: 60px;
+        margin-bottom: var(--space-xs);
+    }
+    
+    .ad-placeholder {
+        font-size: 0.625rem;
+        padding: var(--space-xs);
+    }
+    
+    .ad-content {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+    
+    .ad-header {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.75rem;
+    }
+    
+    .close-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 0.875rem;
+    }
+    
+    .ad-frame {
+        min-width: 250px;
+        min-height: 200px;
+        padding: var(--space-sm);
+    }
+    
+    .video-placeholder {
+        width: 280px;
+        height: 158px;
+    }
+    
+    .video-icon {
+        font-size: 2rem;
+        margin-bottom: var(--space-sm);
+    }
+    
+    .video-placeholder p {
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+    }
+    
+    .progress-text {
+        font-size: 0.625rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .top-banner {
+        height: 50px;
+    }
+    
+    .ad-frame {
+        min-width: 200px;
+        min-height: 150px;
+    }
+    
+    .video-placeholder {
+        width: 240px;
+        height: 135px;
+    }
+    
+    .video-icon {
+        font-size: 1.5rem;
+    }
+    
+    .video-placeholder p {
+        font-size: 0.875rem;
+    }
+}
+
+/* ===== AD LOADING STATES ===== */
+.ad-loading {
+    position: relative;
+}
+
+.ad-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--neon-cyan);
+    border-radius: 50%;
+    animation: ad-spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+@keyframes ad-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ===== AD ERROR STATES ===== */
+.ad-error {
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 128, 0.1));
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 128, 0.3);
+}
+
+.ad-error .ad-placeholder {
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+}
+
+.ad-error .ad-placeholder::after {
+    content: '⚠️ Ad Loading Failed';
+    position: absolute;
+    bottom: var(--space-xs);
+    font-size: 0.625rem;
+}
+
+/* ===== AD SUCCESS STATES ===== */
+.ad-loaded {
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    animation: ad-success 1s ease-out;
+}
+
+@keyframes ad-success {
+    0% { 
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+    100% { 
+        border-color: var(--neon-lime);
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    .video-icon {
+        animation: none;
+    }
+    
+    .progress-bar::before {
+        animation-duration: 30s;
+        animation-timing-function: linear;
+    }
+    
+    .ad-loading::after {
+        animation-duration: 2s;
+    }
+}
+
+/* ===== AD BLOCK DETECTION ===== */
+.ad-blocked {
+    background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(255, 140, 0, 0.1));
+    border-color: var(--neon-yellow);
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+}
+
+.ad-blocked .ad-placeholder {
+    border-color: var(--neon-yellow);
+    color: var(--neon-yellow);
+}
+
+.ad-blocked .ad-placeholder::after {
+    content: 'Please disable ad blocker to support the game';
+    position: absolute;
+    bottom: var(--space-xs);
+    font-size: 0.625rem;
+    text-align: center;
+    padding: 0 var(--space-xs);
+}

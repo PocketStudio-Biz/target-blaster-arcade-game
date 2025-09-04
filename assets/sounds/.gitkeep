@@ -1,0 +1,18 @@
+# Sounds Directory
+
+This directory contains audio files for the game.
+
+Note: The current implementation uses procedurally generated sounds via Web Audio API, so external sound files are optional.
+
+If you want to add custom sounds, recommended formats:
+- MP3 for broad compatibility
+- OGG for better compression
+- WAV for highest quality
+
+Recommended files:
+- shoot.mp3
+- hit.mp3
+- powerup.mp3
+- gamestart.mp3
+- gameover.mp3
+- highscore.mp3

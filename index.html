@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Target Blaster - Fast-paced arcade shooting game. Click targets, earn points, beat your high score!">
+    <meta name="keywords" content="arcade game, shooting game, target practice, online game, mobile game">
+    <meta name="theme-color" content="#00ffff">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Target Blaster - Arcade Shooting Game">
+    <meta property="og:description" content="Fast-paced arcade shooting game. Click targets, earn points, beat your high score!">
+    <meta property="og:url" content="">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%2300ffff%22/></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+            crossorigin="anonymous"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ads.css">
+    
+    <title>Target Blaster - Arcade Shooting Game</title>
+</head>
+<body>
+    <!-- Top Banner Ad -->
+    <div id="top-banner-ad" class="ad-banner top-banner">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <div class="ad-placeholder">
+            <span>Advertisement Space - 728x90</span>
+        </div>
+    </div>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Sidebar Ad (Desktop) -->
+        <div id="sidebar-ad" class="ad-banner sidebar-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="rectangle"></ins>
+            <div class="ad-placeholder">
+                <span>Advertisement<br>300x250</span>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <main class="game-main">
+            <!-- Game Header -->
+            <header class="game-header">
+                <h1 class="game-title">TARGET BLASTER</h1>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">SCORE</span>
+                        <span id="current-score" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">HIGH SCORE</span>
+                        <span id="high-score" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">TIME</span>
+                        <span id="time-left" class="stat-value">60</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Game Canvas -->
+            <div class="canvas-container">
+                <canvas id="game-canvas" width="800" height="600"></canvas>
+                
+                <!-- Game Overlay UI -->
+                <div class="game-overlay">
+                    <!-- Start Screen -->
+                    <div id="start-screen" class="screen active">
+                        <h2 class="screen-title">READY TO BLAST?</h2>
+                        <div class="difficulty-selector">
+                            <h3>SELECT DIFFICULTY</h3>
+                            <div class="difficulty-buttons">
+                                <button class="difficulty-btn" data-difficulty="easy">
+                                    <span class="diff-name">EASY</span>
+                                    <span class="diff-desc">Slow targets • More time</span>
+                                </button>
+                                <button class="difficulty-btn" data-difficulty="medium">
+                                    <span class="diff-name">MEDIUM</span>
+                                    <span class="diff-desc">Standard speed • Normal time</span>
+                                </button>
+                                <button class="difficulty-btn" data-difficulty="hard">
+                                    <span class="diff-name">HARD</span>
+                                    <span class="diff-desc">Fast targets • Less time</span>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="start-game-btn" class="primary-btn disabled" disabled>START GAME</button>
+                    </div>
+
+                    <!-- Game Over Screen -->
+                    <div id="game-over-screen" class="screen">
+                        <h2 class="screen-title">GAME OVER</h2>
+                        <div class="final-stats">
+                            <div class="final-score">
+                                <span class="final-label">FINAL SCORE</span>
+                                <span id="final-score" class="final-value">0</span>
+                            </div>
+                            <div class="final-accuracy">
+                                <span class="final-label">ACCURACY</span>
+                                <span id="final-accuracy" class="final-value">0%</span>
+                            </div>
+                            <div id="new-high-score" class="new-record hidden">
+                                <span class="record-text">NEW HIGH SCORE!</span>
+                            </div>
+                        </div>
+                        <div class="game-over-actions">
+                            <button id="watch-ad-btn" class="secondary-btn">
+                                <span>WATCH AD FOR EXTRA LIFE</span>
+                            </button>
+                            <button id="play-again-btn" class="primary-btn">PLAY AGAIN</button>
+                            <button id="main-menu-btn" class="secondary-btn">MAIN MENU</button>
+                        </div>
+                    </div>
+
+                    <!-- Pause Screen -->
+                    <div id="pause-screen" class="screen">
+                        <h2 class="screen-title">PAUSED</h2>
+                        <div class="pause-actions">
+                            <button id="resume-btn" class="primary-btn">RESUME</button>
+                            <button id="restart-btn" class="secondary-btn">RESTART</button>
+                            <button id="quit-btn" class="secondary-btn">QUIT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Power-up Indicators -->
+                <div class="powerup-indicators">
+                    <div id="rapid-fire-indicator" class="powerup-indicator hidden">
+                        <span class="powerup-name">RAPID FIRE</span>
+                        <div class="powerup-timer"></div>
+                    </div>
+                    <div id="multi-shot-indicator" class="powerup-indicator hidden">
+                        <span class="powerup-name">MULTI SHOT</span>
+                        <div class="powerup-timer"></div>
+                    </div>
+                    <div id="time-freeze-indicator" class="powerup-indicator hidden">
+                        <span class="powerup-name">TIME FREEZE</span>
+                        <div class="powerup-timer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Controls (Mobile) -->
+            <div class="game-controls mobile-only">
+                <button id="pause-btn" class="control-btn">⏸️</button>
+                <button id="mute-btn" class="control-btn">🔊</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Interstitial Ad Overlay -->
+    <div id="interstitial-ad" class="ad-overlay hidden">
+        <div class="ad-content">
+            <div class="ad-header">
+                <span>Advertisement</span>
+                <button id="close-interstitial" class="close-btn">✕</button>
+            </div>
+            <div class="ad-frame">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"></ins>
+                <div class="ad-placeholder large">
+                    <span>Interstitial Advertisement</span>
+                    <p>Game will resume shortly...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rewarded Video Ad Overlay -->
+    <div id="rewarded-ad" class="ad-overlay hidden">
+        <div class="ad-content">
+            <div class="ad-header">
+                <span>Watch Video for Extra Life</span>
+                <button id="skip-reward" class="close-btn">Skip</button>
+            </div>
+            <div class="ad-frame">
+                <div class="video-placeholder">
+                    <div class="video-icon">▶️</div>
+                    <p>Video Advertisement</p>
+                    <div class="video-progress">
+                        <div class="progress-bar"></div>
+                        <span class="progress-text">0:00 / 0:30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-overlay">
+        <div class="loading-content">
+            <h2>TARGET BLASTER</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>Loading game assets...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/audio.js"></script>
+    <script src="js/entities.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/ads.js"></script>
+    <script src="js/game.js"></script>
+    
+    <!-- Initialize AdSense -->
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

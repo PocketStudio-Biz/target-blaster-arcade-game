@@ -1,0 +1,16 @@
+# Sprites Directory
+
+This directory will contain sprite images for the game.
+
+Recommended formats:
+- PNG for images with transparency
+- SVG for scalable graphics
+- WebP for optimized file sizes
+
+Naming convention:
+- target_basic.png
+- target_premium.png
+- powerup_rapidfire.png
+- powerup_multishot.png
+- powerup_timefreeze.png
+- ui_crosshair.png
